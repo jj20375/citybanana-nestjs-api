@@ -1,0 +1,12 @@
+version: '3'
+services:
+  nestjs:
+    image: gcr.io/citybanana/citybanana-nestjs:01643
+    # ports:
+    #   - "9500:9500"
+    volumes:
+      - .env:/usr/src/app/.env:ro
+      - /var/www/html/cdn.citybanana.com:/var/www/html/cdn.citybanana.com:rw
+      - /var/www/html/api.citybanana.com/storage/app/private/firebase-adminsdk/citybanana-firebase.json:/usr/src/app/citybanana-firebase.json:ro
+    network_mode: "host"
+    restart: always
